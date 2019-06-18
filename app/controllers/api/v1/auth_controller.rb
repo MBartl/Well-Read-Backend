@@ -1,4 +1,5 @@
 class Api::V1::AuthController < ApplicationController
+
   def login
     # check if my params contain the entered username and password
     user = User.find_by(username: params[:username])
@@ -7,7 +8,7 @@ class Api::V1::AuthController < ApplicationController
       render json: {user: UserSerializer.new(user), token: token}
       # render json: user
     else
-      render json: {errors: "You dun goofed!"}
+      render json: {errors: "Incorrect username or password"}
     end
   end
 
@@ -15,7 +16,8 @@ class Api::V1::AuthController < ApplicationController
     if session_user
       render json: session_user
     else
-      render json: {errors: "Don't touch my cookies!"}
+      render json: {errors: "Cookies have been tampered with"}
     end
   end
+  
 end

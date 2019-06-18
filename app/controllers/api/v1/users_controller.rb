@@ -1,4 +1,5 @@
 class Api::V1::UsersController < ApplicationController
+  
   def show
 		user = User.find(params[:id])
 
@@ -18,8 +19,4 @@ class Api::V1::UsersController < ApplicationController
 		end
 	end
 
-  def favorites
-    # favs = 
-    Favorite.all.find(user === params[:id])
-  end
 end
