@@ -8,4 +8,12 @@ class Api::V1::FavoritesController < ApplicationController
 
     render json: fav
   end
+
+  def destroy
+    favorite = Favorite.find(params[:id])
+    favorite.destroy
+
+    render json: favorite
+  end
+
 end

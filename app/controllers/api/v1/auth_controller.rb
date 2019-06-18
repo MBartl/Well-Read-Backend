@@ -1,4 +1,5 @@
 class Api::V1::AuthController < ApplicationController
+
   def login
     # check if my params contain the entered username and password
     user = User.find_by(username: params[:username])
@@ -18,4 +19,5 @@ class Api::V1::AuthController < ApplicationController
       render json: {errors: "Don't touch my cookies!"}
     end
   end
+  
 end
