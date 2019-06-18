@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users
-			post "/login", to: "auth#login"
+      resources :favorites
+      resources :books, only: [:create, :destroy]
+      get "/favorites", to: "users#favorites"
 			get "/auto_login", to: "auth#auto_login"
+      post "/login", to: "auth#login"
     end
   end
 end

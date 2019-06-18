@@ -3,7 +3,7 @@ class Api::V1::UsersController < ApplicationController
 		user = User.find(params[:id])
 
 		render json: user
-	end
+  end
 
 	def create
 		user = User.new(
@@ -17,4 +17,9 @@ class Api::V1::UsersController < ApplicationController
 			render json: {errors: user.errors.full_messages}
 		end
 	end
+
+  def favorites
+    # favs = 
+    Favorite.all.find(user === params[:id])
+  end
 end
