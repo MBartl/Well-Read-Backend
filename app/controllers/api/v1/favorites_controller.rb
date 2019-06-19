@@ -9,6 +9,29 @@ class Api::V1::FavoritesController < ApplicationController
     render json: fav
   end
 
+  def update
+    fav = Favorite.find(params[:id])
+
+    fav.tags === "" ?
+      fav.tags = params[:favorite][:tags]
+      :
+      fav.tags += ', ' + params[:favorite][:tags]
+
+    fav.save
+
+    render json: fav
+  end
+
+  def removeTag
+    fav = Favorite.find(params[:id])
+
+    tags = fav.tags.downcase.split(", ") - [params[:remove].downcase]
+
+    fav.update(tags: tags.join(", "))
+
+    render json: fav
+  end
+
   def destroy
     fav = Favorite.find(params[:id])
     fav.destroy

@@ -5,8 +5,11 @@ Rails.application.routes.draw do
       resources :users
       resources :favorites
       resources :books, only: [:create, :destroy]
+
       get "/favorites", to: "users#favorites"
-			get "/auto_login", to: "auth#auto_login"
+      patch "/removetag/:#{:id}", to: "favorites#removeTag"
+
+      get "/auto_login", to: "auth#auto_login"
       post "/login", to: "auth#login"
     end
   end
