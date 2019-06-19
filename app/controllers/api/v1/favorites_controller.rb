@@ -12,7 +12,7 @@ class Api::V1::FavoritesController < ApplicationController
   def update
     fav = Favorite.find(params[:id])
 
-    fav.tags === "" ?
+    fav.tags === nil ?
       fav.tags = params[:favorite][:tags]
       :
       fav.tags += ', ' + params[:favorite][:tags]
